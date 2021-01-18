@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Bootstrap core CSS -->
+        <meta http-equiv="Cache-control" content="no-cache, no-store, must-revalidate"> 
+        <meta http-equiv="Pragma" content="no-cache">
+    </head>
+    <body>
+        <div class="page-content-wrapper">
+            <h1>Sales Ledger</h1>
+        <p>Use Sales Ledger to send transactions to your accounting applications. To process a return or continue sales, go to <a href="#">Sales History</a>.</p>
+        <hr>
+        <div class="form-row">
+            <div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div>
+            <div class="col"><label for="ecsv">Export CSV</label></div>
+        </div>
+        <div class="container p-3 my-3 border">
+            <form action="#">
+                <div class="form-row">
+                    <div class="col"><label for="dfrom">Date From</label></div>
+                    <div class="col"><label for="tdate">Date To</label></div>
+                    <div class="col"><label for="show">Show</label> </div>
+                </div>
+                <div class="form-row">
+                    <div class="col"><input type="date" ng-model="fdate" name="fdate"></div>
+                    <div class="col"><input type="date" ng-model="tdate" name="tdate"></div>
+                    <div class="col"><select ng-model="showType" ng-options="x for x in opts"></select></div>
+                </div>
+                <div class="form-row">
+                    <div class="col"><label for="regist">Register</label></div>
+                    <div class="col"><label for="rnum">Receipt Number</label></div>
+                    <div class="col"><label for="user">User</label> </div>
+                    <div class="col"><label for="custname">Customer Name</label> </div>
+                    <div class="col"><label for="amount">Amount</label> </div>
+                </div>
+                <div class="form-row">
+                    <div class="col"><select><option value="">Main Register</option></select></div>
+                    <div class="col"><input type="number" ng-model="rnum" name="rnum"></div>
+                    <div class="col"><select><option value="sarwaraminy@gmail.com">sarwaraminy@gmail.com</option></select></div>
+                    <div class="col"><input type="text" ng-model="custname" name="custname"></div>
+                    <div class="col"><input type="number" ng-model="amount" name="amount"></div>
+                    <div class="col"></div>
+                </div>
+                <div class="form-row"><hr></div>
+                <div class="form-row">                    
+                    <div class="col"><label for="discnt"><input type="checkbox">Is discounted</label> </div>
+                    <div class="col"><span class="btn btn-primary" style="float: right;">Update</span></div>
+                </div>
+            </form>
+        </div>
+        
+        <hr>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr><th>Date</th><th>User</th><th>Register</th><th>Recipt</th><th>Customer</th><th>Note</th><th>Status</th><th>Total</th></tr>
+            </thead>
+            <tbody>
+                <tr><td colspan="8">No Data Found</td></tr>
+            </tbody>
+        </table>
+        </div>
+        
+    </body>
+</html>

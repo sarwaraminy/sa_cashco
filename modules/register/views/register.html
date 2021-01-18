@@ -1,0 +1,153 @@
+<!--
+
+=========================================================
+* Volt - Bootstrap 5 Admin Dashboard
+=========================================================
+
+* Product Page: https://themesberg.com/product/admin-dashboard/volt-bootstrap-5-dashboard
+* Copyright 2020 Themesberg (https://www.themesberg.com)
+
+* Designed and coded by https://themesberg.com
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. Please contact us to request a removal.
+
+-->
+
+    <main>
+        <header>
+            <div class="list-group.simple-list bg-info text-white">
+                <div class="col">
+                    <ul class="list-inline list-group-flush list-group-borderless text-center text-xl-right mb-0">
+                        <li class="list-inline-item px-0 px-sm-2">
+                            <a href="#/login" class="font-weight-bold">Login</a>
+                        </li>
+                        <li class="list-inline-item px-0 px-sm-2">
+                            <a href="#">Help</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <!-- Section -->
+        <section class="mh-100 d-flex align-items-center">
+            <div class="container">
+                <div class="row justify-content-center form-bg-image" data-background-lg="../../assets/img/illustrations/signin.svg">
+                    <div class="col-12 d-flex align-items-center justify-content-center">
+                        <div class="signin-inner my-3 my-lg-0 bg-white shadow-soft border rounded border-light p-4 p-lg-5 w-100 fmxw-500">
+                            <div class="text-center text-md-center mb-4 mt-md-0">
+                                <h1 class="mb-0 h3">Create an account</h1>
+                            </div>
+                            <form action="#">
+                                <!-- Form -->
+                                <div class="form-group md-4">
+                                    <label for="fname">First Name</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="basic-addon3"><span class="fas fa-user-plus"></span></span>
+                                        <input type="text" ng-model="fname" id="fname" class="form-control" placeholder="First Name" autofocus required>
+                                    </div>
+                                </div>
+                                <!-- End of Form -->
+                                <!-- Form -->
+                                <div class="form-group md-4">
+                                    <label for="fname">First Name</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="basic-addon3"><span class="fas fa-user"></span></span>
+                                        <input type="text" ng-model="lname" id="lname" class="form-control" placeholder="Last Name">
+                                    </div>
+                                </div>
+                                <!-- End of Form -->
+                                <!-- Form -->
+                                <div class="form-group mb-4">
+                                    <label for="email">Your Email</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="basic-addon3"><span class="fas fa-envelope"></span></span>
+                                        <input type="email" ng-model="email" class="form-control" placeholder="example@company.com" id="email" autofocus required>
+                                    </div>  
+                                </div>
+                                <!-- End of Form -->
+                                <div class="form-group">
+                                    <!-- Form -->
+                                    <div class="form-group mb-4">
+                                        <label for="password">Your Password</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text" id="basic-addon4"><span class="fas fa-unlock-alt"></span></span>
+                                            <input type="password" placeholder="Password" class="form-control" id="password" required>
+                                        </div>  
+                                    </div>
+                                    <!-- End of Form -->
+                                    <!-- Form -->
+                                    <div class="form-group mb-4">
+                                        <label for="confirm_password">Confirm Password</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text" id="basic-addon5"><span class="fas fa-unlock-alt"></span></span>
+                                            <input type="password" placeholder="Confirm Password" class="form-control" id="confirm_password" required>
+                                        </div>  
+                                    </div>
+                                    <!-- End of Form -->
+                                    <!-- Form -->
+                                    <div class="form-group mb-4">
+                                        <label for="pnumber">Confirm Password</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text" id="basic-addon5"><span class="fas fa-phone-alt"></span></span>
+                                            <input type="number" placeholder="Contact number with area" class="form-control" name="pnumber" ng-model="pnumber">
+                                        </div>  
+                                    </div>
+                                    <!-- End of Form -->
+                                    <!-- Form -->
+                                    <div class="form-group mb-4">
+                                        <label class="my-1 mr-2" for="btype">Type of Business</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text" id="basic-addon5"><span class="fas fa-cash-register"></span></span>
+                                            <select class="form-select" ng-model="btype" ng-options="b for b in bopts" id="btype" aria-label="Default select example"></select>
+                                        </div>  
+                                    </div>
+                                    <!-- End of Form -->
+                                    <!-- Form -->
+                                    <div class="form-group mb-4">
+                                        <label class="my-1 mr-2" for="location">Number of Locations</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text" id="basic-addon5"><span class="fas fa-location-arrow"></span></span>
+                                            <select class="form-select" ng-model="location" ng-options="l for l in locs" id="location" aria-label="Default select example"></select>
+                                        </div>  
+                                    </div>
+                                    <!-- End of Form -->
+                                    <!-- Form -->
+                                    <div class="form-group mb-4">
+                                        <label class="my-1 mr-2" for="estimat">Estimated Annual Turnover</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text" id="basic-addon5"><span class="fas fa-calculator"></span></span>
+                                            <select class="form-select" ng-model="est" ng-options="e for e in estimat" id="estimat" aria-label="Default select example"></select>
+                                        </div>  
+                                    </div>
+                                    <!-- End of Form -->
+                                    <!-- Form -->
+                                    <div class="form-group mb-4">
+                                        <label class="my-1 mr-2" for="country">Country</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text" id="basic-addon5"><span class="fas fa-map-pin"></span></span>
+                                            <select class="form-select" ng-model="country" ng-options="c.code as c.name for c in cntry" id="country" aria-label="Default select example"></select>
+                                        </div>  
+                                    </div>
+                                    <!-- End of Form -->
+                                    <!-- Form -->
+                                    <div class="form-group mb-4">
+                                        <label class="my-1 mr-2" for="Currency">Trading Currency</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text" id="basic-addon5"><span class="fas fa-dollar-sign"></span></span>
+                                            <select class="form-select" ng-model="curency" ng-options="cr.symbol as cr.name for cr in crncy" id="Currency" aria-label="Default select example"></select>
+                                        </div>  
+                                    </div>
+                                    <!-- End of Form -->
+                                    
+                                </div>
+                                <button type="submit" class="btn btn-block btn-info">Start Free Trail</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+

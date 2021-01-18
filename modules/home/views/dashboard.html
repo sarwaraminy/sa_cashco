@@ -1,0 +1,420 @@
+<!--
+
+=========================================================
+* Volt - Bootstrap 5 Admin Dashboard
+=========================================================
+
+* Product Page: https://themesberg.com/product/admin-dashboard/volt-bootstrap-5-dashboard
+* Copyright 2020 Themesberg (https://www.themesberg.com)
+
+* Designed and coded by https://themesberg.com
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. Please contact us to request a removal.
+
+-->
+
+
+<nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-md-none">
+    <a class="navbar-brand mr-lg-5" href="./index.html">
+        <img class="navbar-brand-dark" src="./assets/img/brand/light.svg" alt="Volt logo" /> <img class="navbar-brand-light" src="./assets/img/brand/dark.svg" alt="Volt logo" />
+    </a>
+    <div class="d-flex align-items-center">
+        <button class="navbar-toggler d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</nav>
+
+<div class="container-fluid bg-soft">
+    <div class="row">
+        <div class="col-12">
+            <nav id="sidebarMenu" class="sidebar d-md-block bg-info text-white collapse" data-simplebar>
+               <div class="sidebar-inner px-4 pt-3">
+                 <div class="user-card d-flex d-md-none align-items-center justify-content-between justify-content-md-center pb-4">
+                   <div class="d-flex align-items-center">
+                     <div class="user-avatar lg-avatar mr-4">
+                       <img src="./assets/img/team/profile-picture-3.jpg" class="card-img-top rounded-circle border-white" alt="Bonnie Green">
+                     </div>
+                     <div class="d-block">
+                       <h2 class="h6">Hi, Jane</h2>
+                       <a href="#login" class="btn btn-secondary text-dark btn-xs"><span class="mr-2"><span class="fas fa-sign-out-alt"></span></span>Sign Out</a>
+                     </div>
+                   </div>
+                   <div class="collapse-close d-md-none">
+                       <a href="#sidebarMenu" class="fas fa-times" data-toggle="collapse"
+                           data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="true"
+                           aria-label="Toggle navigation"></a>
+                   </div>
+                 </div>
+                 <ul class="nav flex-column">
+                   <li class="nav-item  active ">
+                     <a href="" ng-click="nav.page='d_home'" class="nav-link">
+                       <span class="sidebar-icon"><span class="fas fa-chart-pie"></span></span>
+                       <span>Overview</span>
+                     </a>
+                   </li>
+
+                   <!----------------------------right nave menue example-->
+                   <li class="dropdown nav-item">
+                    <!--a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a--->
+                    <span class="nav-link  dropdown-toggle  d-flex justify-content-between align-items-center" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                      <span>
+                        <span class="sidebar-icon"><span class="fa fa-shopping-basket"></span></span> Dropdown
+                      </span>
+                      <span class="link-arrow"><span class="fas fa-chevron-right"></span></span>
+                    </span>
+                    <ul class="dropdown-menu">
+                      <li><a class="nav-link text-dark" href="#">Action</a></li>
+                      <li><a class="nav-link text-dark" href="#">Another action</a></li>
+                      <li><a class="nav-link text-dark" href="#">Something else here</a></li>
+                      <li role="separator" class="divider"></li>
+                      <li class="dropdown-header">Nav header</li>
+                      <li><a href="#">Separated link</a></li>
+                      <li><a href="#">One more separated link</a></li>
+                    </ul>
+                    </li>
+                    <!----------------------------right nave menue-->
+           
+                   <li class="nav-item"> <!---------------------------Sell Menu-->
+                       <span class="nav-link  collapsed  d-flex justify-content-between align-items-center" data-toggle="collapse" data-target="#submenu-Sells">
+                           <span>
+                               <span class="sidebar-icon"><span class="fa fa-shopping-basket"></span></span> 
+                               Sale
+                             </span>
+                             <span class="link-arrow"><span class="fas fa-chevron-right"></span></span>  
+                           </span>
+                       </span>
+                       <div class="multi-level collapse " role="list" id="submenu-Sells" aria-expanded="false">
+                           <ul class="flex-column nav">
+                                 <li class="nav-item"><a class="nav-link" href="" ng-click="nav.page='sell'"><span>Sell</span></a></li>
+                                 <li class="nav-item"><a class="nav-link" href="" ng-click="nav.page='oc'"><span>Open/Close</span></a></li>
+                                 <li class="nav-item"><a class="nav-link" href="" ng-click="nav.page='sh'"><span>Sales History</span></a></li>
+                                 <li class="nav-item"><a class="nav-link" href="" ng-click="nav.page='ffill'"><span>Fullfillments</span></a></li>
+                                 <li class="nav-item"><a class="nav-link" href="" ng-click="nav.page='cm'"><span>Cash Management</span></a></li>
+                                 <li class="nav-item"><a class="nav-link" href="" ng-click="nav.page='sta'"><span>Status</span></a></li>
+                                 <li class="nav-item"><a class="nav-link" href="" ng-click="nav.page='sett'"><span>Settings</span></a></li>
+                           </ul>
+                       </div>
+                   </li>
+                   <li class="nav-item "><!-------------------Sales Ledger-->
+                       <a href="" ng-click="nav.page='saleLdg'" class="nav-link">
+                           <span class="sidebar-icon"><span class="fas fa-send">&#xf1d8;</span></span>
+                           <span>Sales Ledger</span>
+                       </a>
+                   </li>
+           
+                   <li class="nav-item "><!-------------------Reporting-->
+                       <span class="nav-link  collapsed  d-flex justify-content-between align-items-center" data-toggle="collapse" data-target="#submenu-report">
+                           <span>
+                               <span class="sidebar-icon"><span class="fas fa-chart-line"></span></span> 
+                               Reporting
+                             </span>
+                             <span class="link-arrow"><span class="fas fa-chevron-right"></span></span>  
+                           </span>
+                       </span>
+                       <div class="multi-level collapse " role="list" id="submenu-report" aria-expanded="false">
+                           <ul class="flex-column nav">
+                              <li class="nav-item"><a class="nav-link" href="" ng-click="nav.page='rdash'" class="bg-light"><span> Dashboard</span></a></li>
+                              <li class="nav-item"><a class="nav-link" href="" ng-click="nav.page='srpt'"  class="bg-light"><span>Sales Reports</span></a></li>
+                              <li class="nav-item"><a class="nav-link" href="" ng-click="nav.page='irpt'"  class="bg-light"><span>Inventory Reports</span></a></li>
+                              <li class="nav-item"><a class="nav-link" href="" ng-click="nav.page='prpt'"  class="bg-light"><span>Payment Reports</span></a></li>
+                              <li class="nav-item"><a class="nav-link" href="" ng-click="nav.page='rclu'"  class="bg-light"><span>Registrer Closures</span></a></li>
+                              <li class="nav-item"><a class="nav-link" href="" ng-click="nav.page='gcrpt'" class="bg-light"><span>Gift Card Reports</span></a></li>
+                              <li class="nav-item"><a class="nav-link" href="" ng-click="nav.page='scrit'" class="bg-light"><span>Store Credit Reports</span></a></li>
+                              <li class="nav-item"><a class="nav-link" href="" ng-click="nav.page='trpt'"  class="bg-light"><span>Tax Reports</span></a></li>
+                           </ul>
+                       </div>
+                   </li>
+                   <li class="nav-item "><!-------------------Products-->
+                       <span class="nav-link  collapsed  d-flex justify-content-between align-items-center" data-toggle="collapse" data-target="#submenu-product">
+                           <span>
+                               <span class="sidebar-icon"><span class="fa fa-tags"></span></span> 
+                               Products
+                             </span>
+                             <span class="link-arrow"><span class="fas fa-chevron-right"></span></span>  
+                           </span>
+                       </span>
+                       <div class="multi-level collapse " role="list" id="submenu-product" aria-expanded="false">
+                           <ul class="flex-column nav">
+                               <li class="nav-item"><a href="" ng-click="nav.page='prdc'"  class="nav-link"><span>Products</span></a></li>
+                               <li class="nav-item"><a href="" ng-click="nav.page='scntr'" class="nav-link"><span>Stock Control</span></a></li>
+                               <li class="nav-item"><a href="" ng-click="nav.page='icnt'"  class="nav-link"><span>Inventory Counts</span></a></li>
+                               <li class="nav-item"><a href="" ng-click="nav.page='promo'" class="nav-link"><span>Promotions</span></a></li>
+                               <li class="nav-item"><a href="" ng-click="nav.page='prcb'"  class="nav-link"><span>Price Books</span></a></li>
+                               <li class="nav-item"><a href="" ng-click="nav.page='prdct'" class="nav-link"><span>Product Types</span></a></li>
+                               <li class="nav-item"><a href="" ng-click="nav.page='supp'"  class="nav-link"><span>Suppliers</span></a></li>
+                               <li class="nav-item"><a href="" ng-click="nav.page='brnd'"  class="nav-link"><span>Brands</span></a></li>
+                               <li class="nav-item"><a href="" ng-click="nav.page='ptag'"  class="nav-link"><span>Product Tags</span></a></li>
+                           </ul>
+                       </div>
+                   </li>
+                   <li class="nav-item "><!-------------------Customer-->
+                       <span class="nav-link  collapsed  d-flex justify-content-between align-items-center" data-toggle="collapse" data-target="#submenu-Customer">
+                           <span>
+                               <span class="sidebar-icon"><span class="fa fa-people-carry"></span></span> 
+                               Customer
+                             </span>
+                             <span class="link-arrow"><span class="fas fa-chevron-right"></span></span>  
+                           </span>
+                       </span>
+                       <div class="multi-level collapse " role="list" id="submenu-Customer" aria-expanded="false">
+                           <ul class="flex-column nav">
+                               <li class="nav-item"><a href="" ng-click="nav.page='custom'" class="nav-link"><span>Customers</span></a></li>
+                               <li class="nav-item"><a href="" ng-click="nav.page='cgrp'" class="nav-link"><span>Groups</span></a></li>
+                           </ul>
+                       </div>
+                   </li>
+                   <li class="nav-item "><!-------------------Setup-->
+                       <span class="nav-link  collapsed  d-flex justify-content-between align-items-center" data-toggle="collapse" data-target="#submenu-Setup">
+                           <span>
+                               <span class="sidebar-icon"><span class="fa fa fa-cog"></span></span> 
+                               Setup
+                             </span>
+                             <span class="link-arrow"><span class="fas fa-chevron-right"></span></span>  
+                           </span>
+                       </span>
+                       <div class="multi-level collapse " role="list" id="submenu-Setup" aria-expanded="false">
+                           <ul class="flex-column nav">
+                               <li class="nav-item"><a href="" ng-click="nav.page='gnrl'"  class="nav-link"><span>General</span></a></li>
+                               <li class="nav-item"><a href="" ng-click="nav.page='blng'"  class="nav-link"><span>Billing</span></a></li>
+                               <li class="nav-item"><a href="" ng-click="nav.page='otreg'" class="nav-link"><span>Outlets and Registers</span></a></li>
+                               <li class="nav-item"><a href="" ng-click="nav.page='ptype'" class="nav-link"><span>Payment Types</span></a></li>
+                               <li class="nav-item"><a href="" ng-click="nav.page='stax'"  class="nav-link"><span>Sales Taxes</span></a></li>
+                               <li class="nav-item"><a href="" ng-click="nav.page='llty'"  class="nav-link"><span>Loyalty</span></a></li>
+                               <li class="nav-item"><a href="" ng-click="nav.page='usr'"   class="nav-link"><span>Users</span></a></li>
+                               <li class="nav-item"><a href="" ng-click="nav.page='adon'"  class="nav-link"><span>Add-ons</span></a></li>
+                               <li class="nav-item"><a href="" ng-click="nav.page='ptok'"  class="nav-link"><span>Personal Tokens</span></a></li>
+                               <li class="nav-item"><a href="" ng-click="nav.page='gcard'" class="nav-link"><span>Gift Cards</span></a></li>
+                               <li class="nav-item"><a href="" ng-click="nav.page='scret'" class="nav-link"><span>Store Credit</span></a></li>
+                           </ul>
+                       </div>
+                   </li>
+           
+           
+                   
+                 </ul>
+               </div>
+</nav>
+
+                
+ <main class="content">
+  <nav class="navbar navbar-top navbar-expand navbar-dashboard navbar-dark pl-0 pr-2 pb-0">
+    <div class="container-fluid px-0">
+      <div class="d-flex justify-content-between w-100" id="navbarSupportedContent">
+        <div class="d-flex">
+          <!-- Search form -->
+          <form class="navbar-search form-inline" id="navbar-search-main">
+            <div class="input-group input-group-merge search-bar">
+                <span class="input-group-text" id="topbar-addon"><span class="fas fa-search"></span></span>
+                <input type="text" class="form-control" id="topbarInputIconLeft" placeholder="Search" aria-label="Search" aria-describedby="topbar-addon">
+            </div>
+          </form>
+        </div>
+        <!-- Navbar links -->
+        <ul class="navbar-nav align-items-center">
+          <li class="nav-item dropdown">
+            <a class="nav-link text-dark mr-lg-3 icon-notifications" data-unread-notifications="true" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="icon icon-sm">
+                <span class="fas fa-bell bell-shake"></span>
+                <span class="icon-badge rounded-circle unread-notifications"></span>
+              </span>
+            </a>
+            <div class="dropdown-menu dashboard-dropdown dropdown-menu-lg dropdown-menu-center mt-2 py-0">
+              <div class="list-group list-group-flush">
+                <a href="#" class="text-center text-primary font-weight-bold border-bottom border-light py-3">Notifications</a>
+                <a href="./pages/calendar.html" class="list-group-item list-group-item-action border-bottom border-light">
+                  <div class="row align-items-center">
+                      <div class="col-auto">
+                        <!-- Avatar -->
+                        <img alt="Image placeholder" src="./assets/img/team/profile-picture-1.jpg" class="user-avatar lg-avatar rounded-circle">
+                      </div>
+                      <div class="col pl-0 ml--2">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                              <h4 class="h6 mb-0 text-small">Jose Leos</h4>
+                            </div>
+                            <div class="text-right">
+                              <small class="text-danger">a few moments ago</small>
+                            </div>
+                        </div>
+                        <p class="font-small mt-1 mb-0">Added you to an event "Project stand-up" tomorrow at 12:30 AM.</p>
+                      </div>
+                  </div>
+                </a>
+                <a href="./pages/tasks.html" class="list-group-item list-group-item-action border-bottom border-light">
+                  <div class="row align-items-center">
+                      <div class="col-auto">
+                        <!-- Avatar -->
+                        <img alt="Image placeholder" src="./assets/img/team/profile-picture-2.jpg" class="user-avatar lg-avatar rounded-circle">
+                      </div>
+                      <div class="col pl-0 ml--2">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                              <h4 class="h6 mb-0 text-small">Neil Sims</h4>
+                            </div>
+                            <div class="text-right">
+                              <small class="text-danger">2 hrs ago</small>
+                            </div>
+                        </div>
+                        <p class="font-small mt-1 mb-0">You've been assigned a task for "Awesome new project".</p>
+                      </div>
+                  </div>
+                </a>
+                <a href="./pages/tasks.html" class="list-group-item list-group-item-action border-bottom border-light">
+                  <div class="row align-items-center">
+                      <div class="col-auto">
+                        <!-- Avatar -->
+                        <img alt="Image placeholder" src="./assets/img/team/profile-picture-3.jpg" class="user-avatar lg-avatar rounded-circle">
+                      </div>
+                      <div class="col pl-0 ml--2">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                              <h4 class="h6 mb-0 text-small">Roberta Casas</h4>
+                            </div>
+                            <div class="text-right">
+                              <small>5 hrs ago</small>
+                            </div>
+                        </div>
+                        <p class="font-small mt-1 mb-0">Tagged you in a document called "First quarter financial plans",</p>
+                      </div>
+                  </div>
+                </a>
+                <a href="./pages/single-message.html" class="list-group-item list-group-item-action border-bottom border-light">
+                  <div class="row align-items-center">
+                      <div class="col-auto">
+                        <!-- Avatar -->
+                        <img alt="Image placeholder" src="./assets/img/team/profile-picture-4.jpg" class="user-avatar lg-avatar rounded-circle">
+                      </div>
+                      <div class="col pl-0 ml--2">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                              <h4 class="h6 mb-0 text-small">Joseph Garth</h4>
+                            </div>
+                            <div class="text-right">
+                              <small>1 d ago</small>
+                            </div>
+                        </div>
+                        <p class="font-small mt-1 mb-0">New message: "Hey, what's up? All set for the presentation?"</p>
+                      </div>
+                  </div>
+                </a>
+                <a href="./pages/single-message.html" class="list-group-item list-group-item-action border-bottom border-light">
+                  <div class="row align-items-center">
+                      <div class="col-auto">
+                        <!-- Avatar -->
+                        <img alt="Image placeholder" src="./assets/img/team/profile-picture-5.jpg" class="user-avatar lg-avatar rounded-circle">
+                      </div>
+                      <div class="col pl-0 ml--2">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                              <h4 class="h6 mb-0 text-small">Bonnie Green</h4>
+                            </div>
+                            <div class="text-right">
+                              <small>2 hrs ago</small>
+                            </div>
+                        </div>
+                        <p class="font-small mt-1 mb-0">New message: "We need to improve the UI/UX for the landing page."</p>
+                      </div>
+                  </div>
+                </a>
+                <a href="#" class="dropdown-item text-center text-primary font-weight-bold py-3">View all</a>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link pt-1 px-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="media d-flex align-items-center">
+                <img class="user-avatar md-avatar rounded-circle" alt="Image placeholder" src="./assets/img/team/profile-picture-3.jpg">
+                <div class="media-body ml-2 text-dark align-items-center d-none d-lg-block">
+                  <span class="mb-0 font-small font-weight-bold">Bonnie Green</span>
+                </div>
+              </div>
+            </a>
+            <div class="dropdown-menu dashboard-dropdown dropdown-menu-right mt-2">
+              <a class="dropdown-item font-weight-bold" href="#"><span class="far fa-user-circle"></span>My Profile</a>
+              <a class="dropdown-item font-weight-bold" href="#"><span class="fas fa-cog"></span>Settings</a>
+              <a class="dropdown-item font-weight-bold" href="#"><span class="fas fa-envelope-open-text"></span>Messages</a>
+              <a class="dropdown-item font-weight-bold" href="#"><span class="fas fa-user-shield"></span>Support</a>
+              <div role="separator" class="dropdown-divider"></div>
+              <a class="dropdown-item font-weight-bold" href="#login"><span class="fas fa-sign-out-alt text-danger"></span>Logout</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+</nav>
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
+    <div class="btn-toolbar dropdown">
+        <button class="btn btn-primary btn-sm mr-2 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="fas fa-plus mr-2"></span>New Task
+        </button>
+        <div class="dropdown-menu dashboard-dropdown dropdown-menu-left mt-2">
+            <a class="dropdown-item font-weight-bold" href="#"><span class="fas fa-tasks"></span>New Task</a>
+            <a class="dropdown-item font-weight-bold" href="#"><span class="fas fa-cloud-upload-alt"></span>Upload Files</a>
+            <a class="dropdown-item font-weight-bold" href="#"><span class="fas fa-user-shield"></span>Preview Security</a>
+            <div role="separator" class="dropdown-divider"></div>
+            <a class="dropdown-item font-weight-bold" href="#"><span class="fas fa-rocket text-danger"></span>Upgrade to Pro</a>
+        </div>
+    </div>
+    <div class="btn-group">
+        <button type="button" class="btn btn-sm btn-outline-primary">Share</button>
+        <button type="button" class="btn btn-sm btn-outline-primary">Export</button>
+    </div>
+</div>
+
+<div ng-switch="nav.page">
+    <div ng-switch-when="d_home"><div ng-include src="'modules/home/views/d_home.html'"></div></div>
+    <!----------------------Sell Menu templates-->
+    <div ng-switch-when="sell"><div ng-include ng-controller="sellCtrl" src="'modules/sell/views/sell.html'"></div></div>
+    <div ng-switch-when="oc"><div ng-include ng-controller="sellCtrl" src="'modules/sell/views/open_close.html'"></div></div>
+    <div ng-switch-when="sh"><div ng-include ng-controller="sellCtrl" src="'modules/sell/views/saleHistory.html'"></div></div>
+    <div ng-switch-when="ffill"><div ng-include ng-controller="sellCtrl" src="'modules/sell/views/fulfillments.html'"></div></div>
+    <div ng-switch-when="cm"><div ng-include ng-controller="sellCtrl" src="'modules/sell/views/cash_management.html'"></div></div>
+    <div ng-switch-when="sta"><div ng-include ng-controller="sellCtrl" src="'modules/sell/views/Status.html'"></div></div>
+    <div ng-switch-when="sett"><div ng-include ng-controller="sellCtrl" src="'modules/sell/views/Settings.html'"></div></div>
+    <!---------------Sales Ledger menu-->
+    <div ng-switch-when="saleLdg"><div ng-include ng-controller="SLController" src="'modules/sales_ledger/views/saleldg.html'"></div></div>
+    <!----------------------Reporting Menu templates-->
+    <div ng-switch-when="rdash"><div ng-include ng-controller="rptCtrl" src="'modules/reporting/views/rdashboard.html'"></div></div>
+    <div ng-switch-when="srpt"><div ng-include ng-controller="rptCtrl" src="'modules/reporting/views/sale_reports.html'"></div></div>
+    <div ng-switch-when="irpt"><div ng-include ng-controller="rptCtrl" src="'modules/reporting/views/inv_reports.html'"></div></div>
+    <div ng-switch-when="prpt"><div ng-include ng-controller="rptCtrl" src="'modules/reporting/views/pay_reports.html'"></div></div>
+    <div ng-switch-when="rclu"><div ng-include ng-controller="rptCtrl" src="'modules/reporting/views/regis_closure.html'"></div></div>
+    <div ng-switch-when="gcrpt"><div ng-include ng-controller="rptCtrl" src="'modules/reporting/views/gcard_reports.html'"></div></div>
+    <div ng-switch-when="scrit"><div ng-include ng-controller="rptCtrl" src="'modules/reporting/views/scridit_reports.html'"></div></div>
+    <div ng-switch-when="trpt"><div ng-include ng-controller="rptCtrl" src="'modules/reporting/views/tax_reports.html'"></div></div>
+
+    <!----------------------Products Menu templates-->
+    <div ng-switch-when="prdc"><div ng-include ng-controller="prdCtrl" src="'modules/Product/views/products.html'"></div></div>
+    <div ng-switch-when="scntr"><div ng-include ng-controller="prdCtrl" src="'modules/Product/views/stock_cntrl.html'"></div></div>
+    <div ng-switch-when="icnt"><div ng-include ng-controller="prdCtrl" src="'modules/Product/views/inventory_cnt.html'"></div></div>
+    <div ng-switch-when="promo"><div ng-include ng-controller="prdCtrl" src="'modules/Product/views/promotions.html'"></div></div>
+    <div ng-switch-when="prcb"><div ng-include ng-controller="prdCtrl" src="'modules/Product/views/price_books.html'"></div></div>
+    <div ng-switch-when="prdct"><div ng-include ng-controller="prdCtrl" src="'modules/Product/views/product_type.html'"></div></div>
+    <div ng-switch-when="supp"><div ng-include ng-controller="prdCtrl" src="'modules/Product/views/Suppliers.html'"></div></div>
+    <div ng-switch-when="brnd"><div ng-include ng-controller="prdCtrl" src="'modules/Product/views/brands.html'"></div></div>
+    <div ng-switch-when="ptag"><div ng-include ng-controller="prdCtrl" src="'modules/Product/views/product_tag.html'"></div></div>
+
+    <!----------------------Customer menu templates-->
+    <div ng-switch-when="custom"><div ng-include ng-controller="CustomerCtrl" src="'modules/customer/views/customer.html'"></div></div>
+    <div ng-switch-when="cgrp"><div ng-include ng-controller="CustomerCtrl" src="'modules/customer/views/groups.html'"></div></div>
+    
+    <!-----------------------Setup menu templates-->
+    <div ng-switch-when="gnrl"><div ng-include ng-controller="stpCtrl" src="'modules/setup/views/general.html'"></div></div>
+    <div ng-switch-when="blng"><div ng-include ng-controller="stpCtrl" src="'modules/setup/views/billing.html'"></div></div>
+    <div ng-switch-when="otreg"><div ng-include ng-controller="stpCtrl" src="'modules/setup/views/outlets_registers.html'"></div></div>
+    <div ng-switch-when="ptype"><div ng-include ng-controller="stpCtrl" src="'modules/setup/views/payment_type.html'"></div></div>
+    <div ng-switch-when="stax"><div ng-include ng-controller="stpCtrl" src="'modules/setup/views/sales_taxes.html'"></div></div>
+    <div ng-switch-when="llty"><div ng-include ng-controller="stpCtrl" src="'modules/setup/views/loyalty.html'"></div></div>
+    <div ng-switch-when="usr"><div ng-include ng-controller="stpCtrl" src="'modules/setup/views/users.html'"></div></div>
+    <div ng-switch-when="adon"><div ng-include ng-controller="stpCtrl" src="'modules/setup/views/addons.html'"></div></div>
+    <div ng-switch-when="ptok"><div ng-include ng-controller="stpCtrl" src="'modules/setup/views/personal_token.html'"></div></div>
+    <div ng-switch-when="gcard"><div ng-include ng-controller="stpCtrl" src="'modules/setup/views/giftcard.html'"></div></div>
+    <div ng-switch-when="scret"><div ng-include ng-controller="stpCtrl" src="'modules/setup/views/storecredit.html'"></div></div>
+
+  </div>
+</main>
+ 
