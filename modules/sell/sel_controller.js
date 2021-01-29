@@ -2,24 +2,48 @@
 angular.module('Sell')
 .controller('sellCtrl', ['$scope', '$sce', '$http',
     function ($scope, $sce, $http){
-        $scope.rTrue = false;
+        $scope.rTrue = false; //don't show the Sale parked untill clcik on Retrieve Sale
         $scope.currency = '$';
         $scope.popRSale = function () {
             $scope.rTrue = true;
-            $scope.price1 = 269.90;
-            $scope.qty1 = 2;
-            $scope.discont1 = 2;
+            $http.get("./modules/sell/views/component/sellRet.py")
+            .then( function(response) {
+            $scope.items = response.data;
 
-            $scope.price2 = 269.90;
-            $scope.qty2 = 4;
-            $scope.discont2 = 5;
-
-            $scope.Subtotal = ($scope.qty1 * $scope.price1) - (($scope.discont1/100) * ($scope.qty1 * $scope.price1)) + 
-                              ($scope.qty2 * $scope.price2) - (($scope.discont2/100) * ($scope.qty2 * $scope.price2));
-            //$http.post("./modules/sell/views/component/sellRet.html", { priceVal: 269.90 })
-            //.then( function(response) {
-            //$scope.htmlPopover = $sce.trustAsHtml(response.data);
-        //})
+            //get total of price
+            $scope.getTotal = function(){
+                var total = 0;
+                for(var i = 0; i < $scope.items.length; i++){
+                    var item = $scope.items[i];
+                    total += (item.price * item.qty);
+                }
+                return total;
+            };
+            //get currency
+            $scope.getCurency = function () {
+                var item = $scope.items[0];
+                return item.currency;
+            };
+            //get the discount
+            $scope.getDiscnt = function () {
+                var item = $scope.items[0];
+                return item.dcount;
+            };
+            //get the tax
+            $scope.getTax = function () {
+                var item = $scope.items[0];
+                return item.tax;
+            };
+            //get total of price
+            $scope.getTotItem = function(){
+                var totQty = 0;
+                for(var i = 0; i < $scope.items.length; i++){
+                    var item = $scope.items[i];
+                    totQty += (item.qty * 1);
+                }
+                return totQty;
+            };
+        });
         };
     }
 ])

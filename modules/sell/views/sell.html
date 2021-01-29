@@ -76,24 +76,34 @@
                             </div>
                             
                             <!--div ng-bind-html="htmlPopover"></div--><!--------this part is retrived section of Sale which is parked-->
-                            <div ng-if="rTrue">
-                                <div ng-include ng-controller="sellCtrl" src="'modules/sell/views/component/sellRet.html'"></div>
-                            </div>
+                            <div ng-if="rTrue" ng-include ng-controller="sellCtrl" src="'modules/sell/views/component/sellRet.html'"></div>
 
                         </div><!--------end of the right panel row-->
-                        <div class="row mb-4 mb-3 border mr-1 ml-1"><!--  footing of right section of sell-->
+                        <div class="row mb-4 border mr-1 ml-1"><!--  footing of right section of sell-->
                             <div class="col-7"><label>ADD</label></div>
                             <div class="col-sm-3 text-right"><label>Promo Code</label></div>
-                            <div class="col-sm-2 text-right"><a href="" ng-click="addNot">Note</a></div>
+                            <div class="col-sm-2 text-right text-success"><a href="" ng-click="addNot">Note</a></div>
                         </div>
                         <div class="row mb-4 mb-3 border mr-1 ml-1"><!--------Subtotal-->
                             <div class="col-7"><label>Subtotal</label></div>
-                            <div class="col-sm-3 text-right"><label>
-                                {{currency}}{{Subtotal | number:2}}
-                            </label>
+                            <div class="col-sm-4 text-right pr-4"><label>{{getCurency()}}{{ getTotal() | number:2}}</label></div>
                         </div>
+                        <div class="row mb-4 border mr-1 ml-1"><!--  footing of right section for Discount-->
+                            <div class="col-6"><a href="" class="text-success">Discount</a></div>
+                            <div class="col-sm-4 pr-0 text-right"><label>{{getCurency()}}{{getDiscnt() | number: 2}}</label></div>
+                            <div class="col-sm-1 pr-0 text-right"><a href="" class="fas fa-trash-alt text-right text-success"></a></div>
                         </div>
-                        
+                        <div class="row mb-4 border mr-1 ml-1"><!--  footing of right section for Tax-->
+                            <div class="col-6"><label>Tax No Tax</label></div>
+                            <div class="col-sm-4 pr-0 text-right"><label>{{getCurency()}}{{getTax() | number: 2}}</label></div>
+                        </div>
+
+                        <div class="row mb-4 border mr-1 ml-1"><!--  footing of right section for Payment-->
+                            <a href="" class="btn bg-success">
+                                <div class="col-6"><label>Pay {{getTotItem()}} item</label></div>
+                                <div class="col-sm-4 pr-0 text-right"><label>{{getCurency()}}{{getTotal() | number: 2}}</label></div>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
