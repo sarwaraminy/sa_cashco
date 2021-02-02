@@ -181,13 +181,16 @@
 <div ng-switch="nav.page">
   <div ng-switch-when="d_home"><div ng-include src="'modules/home/views/d_home.html'"></div></div>
   <!----------------------Sell Menu templates-->
-  <div ng-switch-when="sell"><div ng-include ng-controller="sellCtrl" src="'modules/sell/views/sell.html'"></div></div>
-  <div ng-switch-when="oc"><div ng-include ng-controller="sellCtrl" src="'modules/sell/views/open_close.html'"></div></div>
-  <div ng-switch-when="sh"><div ng-include ng-controller="sellCtrl" src="'modules/sell/views/saleHistory.html'"></div></div>
-  <div ng-switch-when="ffill"><div ng-include ng-controller="sellCtrl" src="'modules/sell/views/fulfillments.html'"></div></div>
-  <div ng-switch-when="cm"><div ng-include ng-controller="sellCtrl" src="'modules/sell/views/cash_management.html'"></div></div>
-  <div ng-switch-when="sta"><div ng-include ng-controller="sellCtrl" src="'modules/sell/views/Status.html'"></div></div>
-  <div ng-switch-when="sett"><div ng-include ng-controller="sellCtrl" src="'modules/sell/views/Settings.html'"></div></div>
+  <div  ng-controller="sellCtrl">
+    <div ng-switch-when="sell"><div ng-include   src="'modules/sell/views/sell.html'"></div></div>
+    <div ng-switch-when="oc"><div ng-include     src="'modules/sell/views/open_close.html'"></div></div>
+    <div ng-switch-when="sh"><div ng-include     src="'modules/sell/views/saleHistory.html'"></div></div>
+    <div ng-switch-when="ffill"><div ng-include  src="'modules/sell/views/fulfillments.html'"></div></div>
+    <div ng-switch-when="cm"><div ng-include     src="'modules/sell/views/cash_management.html'"></div></div>
+    <div ng-switch-when="sta"><div ng-include    src="'modules/sell/views/Status.html'"></div></div>
+    <div ng-switch-when="sett"><div ng-include   src="'modules/sell/views/Settings.html'"></div></div>
+  </div>
+  
   <!---------------Sales Ledger menu-->
   <div ng-switch-when="saleLdg"><div ng-include ng-controller="SLController" src="'modules/sales_ledger/views/saleldg.html'"></div></div>
   <!----------------------Reporting Menu templates-->

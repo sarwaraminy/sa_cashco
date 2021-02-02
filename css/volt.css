@@ -32832,6 +32832,25 @@ label {
         position: sticky;
         top: 2rem;
     }
+    
+    .product-list-80 {
+        display: block;
+        height: calc(60vh - 2rem);
+        overflow-y: auto;
+        overflow-x: hidden;
+        position: -webkit-sticky;
+        position: sticky;
+        top: 2rem;
+    }
+
+    .doc-sidebar-40 {
+        display: block;
+        height: calc(40vh - 2rem);
+        overflow-y: auto;
+        position: -webkit-sticky;
+        position: sticky;
+        top: 2rem;
+    }
 
     .doc-sidebar .nav-link[data-toggle="collapse"] > .icon {
         transform: rotateZ(-90deg);

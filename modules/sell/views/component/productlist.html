@@ -1,0 +1,64 @@
+
+<div class="row mb-1"><!---Product title-->
+    <!-- Form-->
+    <div class="col-sm-2">
+        <div class="mb-0">
+            <label for="qtyN">Quantity</label>
+        </div>
+    </div>
+    <!-- End of Form -->
+    <!-- Form-->
+    <div class="col-sm-4">
+        <div class="mb-0">
+            <label for="Name">Product Name</label>
+        </div>
+    </div>
+    <!-- End of Form -->
+    <!-- Form-->
+    <div class="col-sm-2">
+        <div class="mb-0">
+            <label for="price">Price</label>
+        </div>
+    </div>
+    <!-- End of Form -->
+</div>
+<form method="POST">
+    <div class="row mb-0" ng-repeat= "plist in productList" ng-class-odd="'odd'" ng-class-even="'even'"><!--Product list items-->
+        <!-- Form-->
+        <div class="col-sm-2">
+            <div class="mb-0">
+                <div class="input-group">
+                    <input type="number" class="form-control" ng-model="plist.qty" value="plist">
+                </div>
+            </div>
+        </div>
+        <!-- End of Form -->
+        <!-- Form-->
+        <div class="col-sm-4">
+            <div class="mb-0 mt-2">
+                <div class="input-group">
+                    <span>{{plist.qtyName}}</span>
+                </div>
+            </div>
+        </div>
+        <!-- End of Form -->
+        <!-- Form-->
+        <div class="col-sm-2">
+            <div class="mb-0 mt-2">
+                <div class="input-group">
+                    <span>{{plist.currency}}{{plist.price | number: 2}}</span>
+                </div>
+            </div>
+        </div>
+        <!-- End of Form-->
+        <!-- Form-->
+        <div class="col-sm-4">
+            <div class="mb-0">
+                <div class="input-group">
+                    <a href="" ng-click="addItemToCart(plist)" class="btn btn-sm btn-tertiary">Buy Item <i class="fas fa-angle-right ml-1"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- End of Form-->
+    </div>
+</form>

@@ -5,16 +5,21 @@
         <div class="card border-light shadow-sm components-section">
             <div class="card-body">
                 <div class="row mb-4">
-                    <div class="col-sm-6 pr-5">
+                    <div class="col-sm-6 pr-5 bg-light">
                         <!-- Form -->
                         <div class="mb-3">
                             <label for="srchProduct">Search for Products</label>
                             <div class="input-group">
                                 <span class="input-group-text" id="basic-addon1"><span class="fas fa-search"></span></span>
-                                <input type="text" class="form-control" id="srchProduct" placeholder="Start typeing or scanning..." aria-label="Search">
+                                <input type="text" class="form-control" ng-model="searchText" placeholder="Start typeing or scanning...">
                             </div>
                         </div>
                         <!-- End of Form -->
+                        <!--- Product list-->
+                        <div class="product-list-80">
+                            <div ng-include src="'modules/sell/views/component/addProduct.html'"></div>
+                        </div>
+                        <!--- End of Product list-->
                     </div>
                     <div class="col-sm-6">
                         <div class="row mb-4 mb-3">
@@ -75,34 +80,48 @@
                                 <input type="text" ng-model="customer" class="form-control" id="customer" placeholder="Add Customer" aria-label="customer">
                             </div>
                             
-                            <!--div ng-bind-html="htmlPopover"></div--><!--------this part is retrived section of Sale which is parked-->
-                            <div ng-if="rTrue" ng-include ng-controller="sellCtrl" src="'modules/sell/views/component/sellRet.html'"></div>
+                            <!--------this part is retrived section of Sale which is parked-->
+                            <div class="doc-sidebar-40">
+                                <div ng-if="rTrue" ng-include src="'modules/sell/views/component/sellRet.html'"></div>
+                                <!----------add product to the pay list--------------------------------------------->
+                                <div ng-include src="'modules/sell/views/component/addPLtoCart.html'"></div>
+                                <!----------end of adding product to pay list---------------------------------------->
+                                </div>
+                            </div><!--------end of the right panel row-->
 
-                        </div><!--------end of the right panel row-->
-                        <div class="row mb-4 border mr-1 ml-1"><!--  footing of right section of sell-->
+                        <div class="row mb-1 border mr-1 ml-1"><!--  footing of right section of sell-->
                             <div class="col-7"><label>ADD</label></div>
                             <div class="col-sm-3 text-right"><label>Promo Code</label></div>
-                            <div class="col-sm-2 text-right text-success"><a href="" ng-click="addNot">Note</a></div>
+                            <div class="col-sm-2 text-right text-success"><a href="" ng-click="ShowHide()">Note</a></div>
                         </div>
-                        <div class="row mb-4 mb-3 border mr-1 ml-1"><!--------Subtotal-->
+                        <div class="row mb-1 border mr-1 ml-1" ng-show="isVisiable"><!----this part used for showing a note-->
+                            <div class="col-11">
+                                <label for="note"><span class="h3">Note </span>Customers will be able to see this note on their receipt</label>
+                                <div class="input-group">
+                                    <input type="text" ng-model="item.note" placeholder="Enter a note about this sale" class="form-control" ng-value="item">
+                                </div>
+                            </div>
+                            <div class="col-sm-1 mt-5"><a href="" ng-click="hideItem();" class="fas fa-trash-alt text-right text-success"></a></div> 
+                        </div><!-- End of the Add Note-->
+                        <div class="row mb-1 border mr-1 ml-1"><!--------Subtotal-->
                             <div class="col-7"><label>Subtotal</label></div>
-                            <div class="col-sm-4 text-right pr-4"><label>{{getCurency()}}{{ getTotal() | number:2}}</label></div>
+                            <div class="col-sm-4 text-right pr-4"><label>{{getCurency()}}{{ getTotal() + getTotalPrk() | number:2}}</label></div>
                         </div>
-                        <div class="row mb-4 border mr-1 ml-1"><!--  footing of right section for Discount-->
-                            <div class="col-6"><a href="" class="text-success">Discount</a></div>
+                        <div class="row mb-1 border mr-1 ml-1"><!--  footing of right section for Discount-->
+                            <div class="col-6"><!-----------this column used for popover for Discount-->
+                                <a href="" class="text-success">Discount</a>
+                            </div>
                             <div class="col-sm-4 pr-0 text-right"><label>{{getCurency()}}{{getDiscnt() | number: 2}}</label></div>
                             <div class="col-sm-1 pr-0 text-right"><a href="" class="fas fa-trash-alt text-right text-success"></a></div>
                         </div>
-                        <div class="row mb-4 border mr-1 ml-1"><!--  footing of right section for Tax-->
+                        <div class="row mb-1 border mr-1 ml-1"><!--  footing of right section for Tax-->
                             <div class="col-6"><label>Tax No Tax</label></div>
                             <div class="col-sm-4 pr-0 text-right"><label>{{getCurency()}}{{getTax() | number: 2}}</label></div>
                         </div>
 
-                        <div class="row mb-4 border mr-1 ml-1"><!--  footing of right section for Payment-->
-                            <a href="" class="btn bg-success">
-                                <div class="col-6"><label>Pay {{getTotItem()}} item</label></div>
-                                <div class="col-sm-4 pr-0 text-right"><label>{{getCurency()}}{{getTotal() | number: 2}}</label></div>
-                            </a>
+                        <div class="row mb-1 border mr-1 ml-1 bg-success" ng-show="getTotal() + getTotalPrk() != 0"><!--  footing of right section for Payment-->
+                            <div class="col-6"><a href="">Pay {{getTotItem() + getTotalQty()}} item</a></div>
+                            <div class="col-sm-4 pr-0 text-right"><a href="">{{getCurency()}}{{getTotal() + getTotalPrk() | number: 2}}</a></div>
                         </div>
                     </div>
                 </div>
