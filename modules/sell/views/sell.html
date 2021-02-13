@@ -5,127 +5,26 @@
         <div class="card border-light shadow-sm components-section">
             <div class="card-body">
                 <div class="row mb-4">
-                    <div class="col-sm-6 pr-5 bg-light">
-                        <!-- Form -->
-                        <div class="mb-3">
-                            <label for="srchProduct">Search for Products</label>
-                            <div class="input-group">
-                                <span class="input-group-text" id="basic-addon1"><span class="fas fa-search"></span></span>
-                                <input type="text" class="form-control" ng-model="searchText" placeholder="Start typeing or scanning...">
-                            </div>
-                        </div>
-                        <!-- End of Form -->
-                        <!--- Product list-->
-                        <div class="product-list-80">
-                            <div ng-include src="'modules/sell/views/component/addProduct.html'"></div>
-                        </div>
-                        <!--- End of Product list-->
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="row mb-4 mb-3">
-                            <div class="col">
-                                <!-- Form -->
-                                    <!-- Button Modal -->
-                                    <a href="" ng-click="popRSale()">
-                                        <span class="icon icon-small ml-1"><span class="fas fa-reply mr-2"></span></span>Retrieve Sale
-                                    </a>
-                                <!-- End of Form -->
-                            </div>
-                            <div class="col">
-                                    <label for="" data-toggle="modal" data-target="#parked-ddl">
-                                        <span class="icon icon-small ml-1"><span class="fas fa-history mr-2"></span></span>Park Sale
-                                    </label>
-                                    <!-- Modal Content -->
-                                    <div class="modal fade" id="parked-ddl" tabindex="-1" role="dialog" aria-labelledby="parked-ddl" aria-hidden="true">
-                                        <div class="modal-dialog modal-info modal-dialog-centered" role="document">
-                                            <div class="modal-content bg-gradient-secondary">
-                                                <div class="modal-header">
-                                                    <p class="modal-title" id="modal-title-notification">A new experience, personalized for you.</p>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">×</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="py-3 text-center">
-                                                        <span class="modal-icon display-1-lg"><span class="far fa-envelope-open"></span></span>
-                                                        <h2 class="h4 modal-title my-3">Important message!</h2>
-                                                        <p>Do you know that you can assign status and relation to a company right in the visit list?.</p>
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-sm btn-white">Go to Inbox</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End of Modal Content -->
-                                <!-- End of Form -->
-                            </div>
-                            <div class="col">
-                                <!-- Form -->
-                                    <label for="" data-toggle="dropdown" data-targe="#mactions-ddl" aria-haspopup="true" aria-expanded="false">
-                                        <span class="icon icon-small ml-1"><span class="fas fa-chevron-down mr-2"></span></span>More Actions...
-                                    </label>
-                                    <!----------------------------Dropdown data-->
-                                    <div class="dropdown-menu dashboard-dropdown dropdown-menu-left mt-2" id="mactions-ddl">
-                                        <a class="dropdown-item font-weight-bold" href="#"><span class="fas fa-box-open mr-2"></span>parked </a>
-                                        <a class="dropdown-item font-weight-bold" href="#"><span class="fas fa-store mr-2"></span>unfulfillments</a>
-                                    </div>
-                                    <!----------------------------end of Dropdown-->
-                                <!-- End of Form -->
-                            </div>
+                    <div ng-show="false" id="psale"><!----------this part is used for printing Sale-->
+                        <div ng-include src="'modules/sell/views/component/sell_print.html'"></div>
+                    </div><!--------------------end of the print-->
 
-                            <div class="input-group">
-                                <span class="input-group-text" id="basic-addon3"><span class="fas fa-user"></span></span>
-                                <input type="text" ng-model="customer" class="form-control" id="customer" placeholder="Add Customer" aria-label="customer">
-                            </div>
-                            
-                            <!--------this part is retrived section of Sale which is parked-->
-                            <div class="doc-sidebar-40">
-                                <div ng-if="rTrue" ng-include src="'modules/sell/views/component/sellRet.html'"></div>
-                                <!----------add product to the pay list--------------------------------------------->
-                                <div ng-include src="'modules/sell/views/component/addPLtoCart.html'"></div>
-                                <!----------end of adding product to pay list---------------------------------------->
-                                </div>
-                            </div><!--------end of the right panel row-->
-
-                        <div class="row mb-1 border mr-1 ml-1"><!--  footing of right section of sell-->
-                            <div class="col-7"><label>ADD</label></div>
-                            <div class="col-sm-3 text-right"><label>Promo Code</label></div>
-                            <div class="col-sm-2 text-right text-success"><a href="" ng-click="ShowHide()">Note</a></div>
-                        </div>
-                        <div class="row mb-1 border mr-1 ml-1" ng-show="isVisiable"><!----this part used for showing a note-->
-                            <div class="col-11">
-                                <label for="note"><span class="h3">Note </span>Customers will be able to see this note on their receipt</label>
-                                <div class="input-group">
-                                    <input type="text" ng-model="item.note" placeholder="Enter a note about this sale" class="form-control" ng-value="item">
-                                </div>
-                            </div>
-                            <div class="col-sm-1 mt-5"><a href="" ng-click="hideItem();" class="fas fa-trash-alt text-right text-success"></a></div> 
-                        </div><!-- End of the Add Note-->
-                        <div class="row mb-1 border mr-1 ml-1"><!--------Subtotal-->
-                            <div class="col-7"><label>Subtotal</label></div>
-                            <div class="col-sm-4 text-right pr-4"><label>{{getCurency()}}{{ getTotal() + getTotalPrk() | number:2}}</label></div>
-                        </div>
-                        <div class="row mb-1 border mr-1 ml-1"><!--  footing of right section for Discount-->
-                            <div class="col-6"><!-----------this column used for popover for Discount-->
-                                <a href="" class="text-success">Discount</a>
-                            </div>
-                            <div class="col-sm-4 pr-0 text-right"><label>{{getCurency()}}{{getDiscnt() | number: 2}}</label></div>
-                            <div class="col-sm-1 pr-0 text-right"><a href="" class="fas fa-trash-alt text-right text-success"></a></div>
-                        </div>
-                        <div class="row mb-1 border mr-1 ml-1"><!--  footing of right section for Tax-->
-                            <div class="col-6"><label>Tax No Tax</label></div>
-                            <div class="col-sm-4 pr-0 text-right"><label>{{getCurency()}}{{getTax() | number: 2}}</label></div>
-                        </div>
-
-                        <div class="row mb-1 border mr-1 ml-1 bg-success" ng-show="getTotal() + getTotalPrk() != 0"><!--  footing of right section for Payment-->
-                            <div class="col-6"><a href="">Pay {{getTotItem() + getTotalQty()}} item</a></div>
-                            <div class="col-sm-4 pr-0 text-right"><a href="">{{getCurency()}}{{getTotal() + getTotalPrk() | number: 2}}</a></div>
-                        </div>
-                    </div>
+                    <div ng-show="showProductList" class="col-sm-6 pr-5 bg-light"><!---sell left column Start-->
+                        <div ng-include src="'modules/sell/views/component/sell_leftCol.html'"></div>
+                    </div><!------------------end of Sell left Column-->
+                    <div ng-show="showPayList" class="col-sm-6 pr-5 bg-light"><!---sell left column Start for -->
+                        <div ng-include src="'modules/sell/views/component/sell_leftColPL.html'"></div>
+                    </div><!------------------end of Sell left Column-->
+                    <div ng-show="showList" class="col-sm-6"><!------------sell right column for adding product to list and parking Start-->
+                        <div ng-include src="'modules/sell/views/component/sell_rightColCard.html'"></div>
+                    </div><!--------------End of the sell right column for product list-->
+                    <div ng-show="showPayPg" class="col-sm-6 border border-light pl-1"><!------Pay page when you click on Pay item button Start-->
+                        <div ng-include src="'modules/sell/views/component/sell_rightColPay.html'"></div>
+                    </div><!-----------------------End of the Pay page column-->
+                    <div ng-show="showColect" class="col-sm-6 border border-light pl-1"><!------Pay page when you click on Pay item button Start-->
+                        <div ng-include src="'modules/sell/views/component/sell_rightCollCollect.html'"></div>
+                    </div><!-----------------------End of the Pay page column-->
                 </div>
             </div>
         </div>
-    </div>
 </div>

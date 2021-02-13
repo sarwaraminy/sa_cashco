@@ -1,0 +1,36 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <div class="row">
+            <div class="col-sm-6 h3">Amount to pay</div>
+            <div class="col-sm-5 text-right h3">{{currency}}{{ pay_totVal |number:2 }}</div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <p class="h3">Amount Given by Customer</p>
+        <div class="row">
+            <div class="col-sm-4">
+                <!-- Form -->
+                <div class="mb-3">
+                    <div class="input-group">
+                        <span class="input-group-text bg-light">{{currency}}</span>
+                        <input type="number" class="form-control text-right" placeholder="0.00" ng-model="payed">
+                    </div>                
+                </div>
+                <!-- End of Form -->
+            </div>
+            <div class="col-sm-6">
+                <!-- Form -->
+                <div class="mb-3">
+                    <div class="input-group">
+                        <span class="btn btn-gray text-right" ng-hide="payed == pay_totVal || payed > pay_totVal">{{currency}}{{pay_totVal - payed | number:2}}</span>
+                        <button type="button" class="btn btn-success" ng-click="collect(payed,pay_totVal)" ng-show="payed == pay_totVal || payed > pay_totVal"> Collect {{currency}}{{payed | number:2}}</button>
+                    </div>                
+                </div>
+                <!-- End of Form -->
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-success" type="button" ng-click="cancel()">Close</button>
+    </div>
+</div>

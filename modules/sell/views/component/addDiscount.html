@@ -1,0 +1,53 @@
+
+
+<div class="row align-items-center">
+    <div class="col-sm-3">
+        <!-- Form -->
+        <div class="mb-3">
+            <div class="input-group">
+                <button class="btn btn-outline-success" ng-click="dcntSign = '%'" type="button">%</button>
+            </div>
+        </div>
+        <!-- End of Form -->
+    </div>
+    <div class="col-sm-3">
+        <!-- Form -->
+        <div class="mb-3">
+            <div class="input-group">
+                <button class="btn btn-outline-success" ng-click="dcntSign = '$'" type="button">{{currency}}</button>
+            </div>
+        </div>
+        <!-- End of Form -->
+    </div>
+    <div class="col-sm-6">
+        <!-- Form -->
+        <div class="mb-3">
+            <div class="input-group">
+                <input type="number" class="form-control" placeholder="0" ng-model="dcount">
+                <span class="input-group-text bg-light">{{dcntSign}}</span>
+            </div>                
+        </div>
+        <!-- End of Form -->
+    </div>
+</div>
+
+<div class="row bg-light mr-0 ml-0">
+<div class="col-sm-6">
+    <!-- Form -->
+    <div class="mb-0">
+        <div class="input-group">
+            <button type="button" ng-click="dcntPopover.close()" class="btn btn-gray">cancel</button>
+        </div>                
+    </div>
+    <!-- End of Form -->
+</div>
+<div class="col-sm-6">
+    <!-- Form -->
+    <div class="mb-0">
+        <div class="input-group">
+            <button type="button" ng-click="dcntPopover.Save(dcntSign, dcount)" class="btn btn-success">Add</button>
+        </div>                
+    </div>
+    <!-- End of Form -->
+</div>
+</div>      

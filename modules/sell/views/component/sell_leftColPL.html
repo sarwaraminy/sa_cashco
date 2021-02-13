@@ -1,0 +1,73 @@
+
+<div class="product-list-80">
+    <div class="text-primary mr-3 mt-3">
+        <span class="mr-1"><span class="fas fa-arrow-left fa-2x text-gray"></span></span>
+         <span class="h2">Sale</span>
+    </div>
+    <div class="row ml-3" ng-repeat="item in items"><!----------this part is used for parked Item-->
+        <div class="col-sm-1">{{item.qty}}</div>
+        <div class="col-sm-6">{{item.qtyName}}</div>
+        <div class="col-sm-4 text-right">{{currency}}{{(item.qty * item.price) - ((item.dcount/100) * (item.qty * item.price)) | number:2}}</div>
+    </div><!---------end of the parked sale-->
+    <div class="row ml-3" ng-repeat="item in cart | orderBy:'category'"><!---this part is used for adding product-->
+        <div class="col-sm-1">{{item.qty}}</div>
+        <div class="col-sm-6">{{item.description}}</div>
+        <div class="col-sm-4 text-right">{{currency}}{{(item.qty * item.price) - ((item.dcount/100) * (item.qty * item.price)) | number:2}}</div>
+    </div><!---end of the adding product-->
+    <hr>
+    <div class="row ml-3"><!--------Subtotal-->
+        <div class="col-7"><label>Sub-Total</label></div>
+        <div class="col-sm-4 text-right">{{currency}}{{ getTotal() + getTotalPrk() | number:2}}</div>
+    </div><!---end of the subtotal-->
+    <div class="row ml-3"><!--------Additinal Discoun-->
+        <div class="col-7"><label>Additional Discount</label></div>
+        <div ng-switch = "dcntSign" class="col-sm-4 text-right">
+            <label ng-switch-when="%">-{{currency}}{{((dcount/100) * (getTotal() + getTotalPrk())) | number: 2}}</label>
+            <label ng-switch-when ="$">-{{currency}}{{dcount}}</label>
+        </div>
+    </div><!---end of the Additinal Discoun-->
+    <div class="row ml-3"><!--  section for Tax-->
+        <div class="col-7"><label>Tax No Tax</label></div>
+        <div class="col-sm-4 text-right"><label>{{currency}}{{getTax() | number: 2}}</label></div>
+    </div><!---end of the Tax no-->
+    <hr>
+    <div class="row" ng-switch="dcntSign"><!----Sale total item Start-->
+        <div ng-switch-when="%" class="row ml-3"><!--  footing of right section for Payment-->
+          <div class="col-7"><span>SALE TOTAL {{getTotItem() + getTotalQty()}} item</span></div>
+          <div class="col-sm-4 text-right">
+            <span>{{currency}}{{(getTotal() + getTotalPrk()) - ((dcount/100) * (getTotal() + getTotalPrk())) | number: 2}}</span>
+          </div>
+        </div>
+        <div ng-switch-when="$" class="row ml-3"><!--  footing of right section for Payment-->
+          <div class="col-7"><span>SALE TOTAL {{getTotItem() + getTotalQty()}} item</span></div>
+          <div class="col-sm-4 text-right">
+            <span>{{currency}}{{(getTotal() + getTotalPrk()) - dcount | number: 2}}</span>
+          </div>
+        </div>
+    </div><!-----------End of the Sale Total-->
+    <hr>
+    <div class="row ml-4" ng-show="showCash" ng-init="false"><!--  section for Cash payed-->
+        <div class="col-7"><label class="row">Cash</label><span class="row">{{date | date:'yyyy-MM-dd'}}</span></div>
+        <div class="col-sm-4 text-right"><label>{{currency}}{{collect | number: 2}}</label></div>
+    </div><!---end of the Tax no-->
+    <hr ng-show="showCash" ng-init="false">
+    <div class="row ml-4" ng-show="showCash" ng-init="false"><!--  section for changed payed-->
+        <div class="col-7"><label class="row">Changed</label></div>
+        <div class="col-sm-4 text-right"><label>{{currency}}{{collect - payVl | number:2}}</label></div>
+    </div><!---end of the Tax no-->
+    <hr ng-show="showCash" ng-init="false">
+    <div class="row ml-4" ng-show="showCash" ng-init="false"><!--  section for changed payed-->
+        <div class="col-7"><label class="row">To Pay</label></div>
+        <div class="col-sm-4 text-right" ng-show="payVal > collect"><label>{{currency}}{{payVl - collect | number:2}}</label></div>
+        <div class="col-sm-4 text-right" ng-show="payVal < collect || payVal == collect"><label>{{currency}}0.00</label></div>
+    </div><!---end of the Tax no-->
+    <hr ng-show="showCash" ng-init="false">
+    <div class="row ml-3"><!--------Additinal Discoun-->
+        <div class="col-7"><label>TOTAL SAVINGS</label></div>
+        <div ng-switch = "dcntSign" class="col-sm-4 text-right">
+            <label ng-switch-when="%">{{currency}}{{((dcount/100) * (getTotal() + getTotalPrk())) | number: 2}}</label>
+            <label ng-switch-when ="$">{{currency}}{{dcount}}</label>
+        </div>
+    </div><!---end of the Additinal Discoun-->
+
+</div>

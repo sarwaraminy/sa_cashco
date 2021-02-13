@@ -1,0 +1,80 @@
+
+<div class="table-responsive">
+    <table class="table table-borderless mr-0">
+        <thead class="thead-light">
+            <tr>
+                <th class="border-0 text-underline">#</th>
+                <th class="border-0 text-underline">Name</th>
+                <th class="border-0 text-right text-underline">Total Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in items">
+                <td>{{item.qty}}</td>
+                <td>{{item.qtyName}}</td>
+                <td class="text-right">{{currency}}{{(item.qty * item.price) - ((item.dcount/100) * (item.qty * item.price)) | number:2}}</td>
+            </tr>
+            <tr ng-repeat="item in cart | orderBy:'category'">
+                <td>{{item.qty}}</td>
+                <td>{{item.description}}</td>
+                <td class="text-right">{{currency}}{{(item.qty * item.price) - ((item.dcount/100) * (item.qty * item.price)) | number:2}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="table table-centered table-nowrap mb-0 rounded">
+        <tr><td colspan="3">&nbsp;</td></tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>Sub-Total</td>
+            <td class="text-right">{{currency}}{{ getTotal() + getTotalPrk() | number:2}}</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>Additional Discoun</td>
+            <td ng-switch = "dcntSign" class="text-right">
+                <label ng-switch-when="%">-{{currency}}{{((dcount/100) * (getTotal() + getTotalPrk())) | number: 2}}</label>
+                <label ng-switch-when ="$">-{{currency}}{{dcount}}</label>
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>Tax No Tax</td>
+            <td class="text-right">{{currency}}{{getTax() | number: 2}}</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>SALE TOTAL {{getTotItem() + getTotalQty()}} item</td>
+            <td class="text-right" ng-switch="dcntSign">
+                <label ng-switch-when="%">{{currency}}{{(getTotal() + getTotalPrk()) - ((dcount/100) * (getTotal() + getTotalPrk())) | number: 2}}</label>
+                <label ng-switch-when="$">{{currency}}{{(getTotal() + getTotalPrk()) - dcount | number: 2}}</label>
+            </td>
+        </tr>
+        <tr><!--  section for Cash payed-->
+            <td>&nbsp;</td>
+            <td><label>Cash</label><br><span>{{date | date:'yyyy-MM-dd'}}</span></td>
+            <td class="text-right">{{currency}}{{collect | number: 2}}</td>
+        </tr>
+        <tr><!--  section for changed payed-->
+            <td>&nbsp;</td>
+            <td>Changed</td>
+            <td class="text-right">{{currency}}{{collect - payVl | number:2}}</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>To Pay</td>
+            <td class="text-right" ng-if="payVal > collect">{{currency}}{{payVl - collect | number:2}}</td>
+            <td class="text-right" ng-if="payVal < collect || payVal == collect">{{currency}}0.00</td>
+        </tr>
+        <tr><!-------Total money you saved than others-->
+            <td>&nbsp;</td>
+            <td>TOTAL SAVINGS</td>
+            <td class="text-right" ng-switch = "dcntSign">
+                <label ng-switch-when="%">{{currency}}{{((dcount/100) * (getTotal() + getTotalPrk())) | number: 2}}</label>
+                <label ng-switch-when ="$">{{currency}}{{dcount}}</label>
+            </td>
+        </tr>
+    </table>
+</div>
+
+

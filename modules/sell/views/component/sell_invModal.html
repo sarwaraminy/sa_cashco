@@ -1,0 +1,42 @@
+
+<!--------------------------------------------------------------------------------------------->
+<!---------- this program is used for showing inventory Details                -->
+<!--------------------------------------------------------------------------------------------->
+
+    <div class="modal-content">
+        <div class="modal-header">
+            <p class="modal-title">{{inv_name}}</p>
+        </div>
+        <div class="modal-body">
+            <div class="table-responsive">
+                <table class="table table-centered table-nowrap mb-0 rounded">
+                    <thead class="thead-light">
+                        <tr>
+                            <th class="border-0">#</th>
+                            <th class="border-0">Name</th>
+                            <th class="border-0">Description</th>
+                            <th class="border-0">Category</th>
+                            <th class="border-0">Supplier Price</th>
+                            <th class="border-0">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Item -->
+                        <tr ng-repeat = "i in [0,1,2,3,4,5,6,7,8,9,10,11]" ng-class-odd = "'bg-light'">
+                            <td class="border-0"><a href="#" class="text-primary font-weight-bold">{{$index + 1}}</a> </td>
+                            <td class="border-0 font-weight-bold"><span class="icon icon-xs icon-gray w-30"><span class="fas fa-globe-europe"></span></span>{{inv_name}}</td>
+                            <td class="border-0">{{inv_desc}}</td>
+                            <td class="border-0">{{inv_catg}}</td>
+                            <td class="border-0">{{inv_sup_price}}</td>
+                            <td class="border-0">{{inv_price}}</td>
+                        </tr>
+                        <!-- End of Item -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-success" type="button" ng-click="cancel()">Close</button>
+        </div>
+    </div>
+

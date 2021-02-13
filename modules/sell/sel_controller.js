@@ -1,22 +1,74 @@
 'use strict';
-angular.module('Sell', ['ngAnimate'])
-.controller('sellCtrl', ['$scope', '$sce', '$http','$cookies',
-    function ($scope, $sce, $http, $cookies){
+angular.module('Sell', ['ngAnimate', 'ui.bootstrap'])
+.controller('sellCtrl', ['$scope', '$sce', '$http','$cookies', '$uibModal', '$log', '$route', '$location',
+    function ($scope, $sce, $http, $cookies, $uibModal, $log, $route, $location){
         $scope.rTrue = false; //don't show the Sale parked untill clcik on Retrieve Sale
         $scope.currency = '$';
+        $scope.dcount = 0;
+        $scope.showList = true; //show the product list in sell page which is right column
+        $scope.showPayPg = false; // don't show the pay page
+        $scope.showProductList = true; // show the product list in left column
+        $scope.showPayList = false; // hide the paylist detail in left column
+        $scope.showColect = false; //hide the collect right column detail
+        $scope.date = new Date();// current date
+        //==========================================================================
+        $scope.competPay = function(){
+          //add a function to Save the final pay
+          $route.reload();// reload the sale page
+        };
+        //=========================================================================
+
+        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        $scope.printDiv = function(divName) {
+          var printContents = document.getElementById(divName).innerHTML;
+          var popupWin = window.open('', '_blank', 'width=500,height=300');
+          popupWin.document.open();
+          popupWin.document.write('<html><head><link rel="stylesheet" type="text/css" href="./css/volt.css" /></head><body onload="window.print()">' + printContents + '</body></html>');
+          popupWin.document.close();
+        } ;
+        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        //**********************pay button click********************************* */
+        $scope.showPay = function (amount){
+          $scope.showList = false; // hide add to card list
+          $scope.showPayPg = true; //show the pay list with cash button
+          $scope.payVal = amount;
+          $scope.showProductList = false; // hide the product list in left column
+          $scope.showPayList = true; // show the paylist detail in left column
+        };
+        //******************************************************* */
+        //.....................from pay page...............................
+        $scope.showPlist = function () {
+          $scope.showList = true; // show the add to card page in right column
+          $scope.showPayPg = false;// hide pay list page in right column
+          $scope.showProductList = true; // show the product list in left column
+          $scope.showPayList = false; // hide the paylist detail in left column
+        };
+        //.................................................................
+        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        $scope.collect = function(collected, payTo) {
+          $scope.showPayPg = false;// hide pay list page in right column
+          $scope.showColect = true; // show collect right column detail
+          $scope.collect = collected;
+          $scope.payVl = payTo; 
+          $scope.showCash = true; //show the Cash row in left column
+          $scope.modalInstance.dismiss(); //close the ui modal
+        };
+
+        //++++++++++++++++++ retrive parked items Start ++++++++++++++++++++++++++++++++++++++++++++++++++
         $scope.popRSale = function () {
             $scope.rTrue = true;
-            $http.get("./modules/sell/views/component/sellRet.py")
+            $http.get("./modules/sell/views/component/sell_parked.py")
             .then( function(response) {
             $scope.items = response.data;
 
-            //removed parked item
+            //removed parked item Start ----------------------------------------------------
             $scope.removeItemPrk = function(item) {
               var index = $scope.items.indexOf(item);
               $scope.items.splice(index, 1);
-            };
+            };//removed parked item End ----------------------------------------------------
 
-            //get total of price
+            //get total of price for parked Item Start ------------------------------------
             $scope.getTotalPrk = function(){
                 var total = 0;
                 for(var i = 0; i < $scope.items.length; i++){
@@ -24,7 +76,8 @@ angular.module('Sell', ['ngAnimate'])
                     total += (item.price * item.qty) - ((item.dcount/100) * (item.price * item.qty));
                 }
                 return total;
-            };
+            };//get total of price for parked Item Start ------------------------------------
+
             //get currency
             $scope.getCurency = function () {
                 var item = $scope.items[0];
@@ -50,7 +103,7 @@ angular.module('Sell', ['ngAnimate'])
                 return totQty;
             };
          });
-       };
+       };//++++++++++++++++++ End of retrive parked items Start ++++++++++++++++++++++++++++++++++++++++++++++++++
       
        //add note show
        $scope.ShowHide = function () {
@@ -122,5 +175,111 @@ angular.module('Sell', ['ngAnimate'])
           };
        //end of adding product buy
 
+       //sort Products +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+       $scope.sort = {
+         column: '',
+         descending: false
+       };
+       $scope.changeSort = function ( column ) {
+         var sort = $scope.sort;
+         if (sort.column == column ) {
+           sort.descending = !sort.descending;
+         }
+         else {
+           sort.column = column;
+           sort.descending = false;
+         }
+       };// end of Product sorting function  +++++++++++++++++++++++++++++++++++++++
+
+       //popover js -----------------------Start
+      
+       //default value of discoumn sign
+       $scope.dcntSign = '%';
+       $scope.dcntPopover = {
+        isOpen: false,
+        templateUrl: './modules/sell/views/component/addDiscount.html',
+        open: function open() {
+          $scope.dcntPopover.isOpen = true;
+          $scope.dcntPopover.data = 'Hello!';
+        },
+        //close on cancel
+        close: function close() {
+          $scope.dcntPopover.isOpen = false;
+        },
+        //Save the content of dicount on Add
+        Save: function Save(sign, numb) {
+          // Save the content:
+          $scope.dcntSign = sign;
+          $scope.dcount = numb;
+          $scope.dcntPopover.isOpen = false;
+        }
+      };
+      $scope.placement = {
+        options: ['top', 'top-left', 'top-right', 'bottom', 'bottom-left', 'bottom-right', 'left', 'left-top', 'left-bottom', 'right', 'right-top', 'right-bottom'],
+        selected: 'left'
+      };//-------------End of popover------------------------
+
+      //remove the total discount-------------start------------------------
+      $scope.rDcnt = function () {
+        $scope.dcount=0;
+      }
+      //remove the total discount--------------------------end-------------
+      //-------------this function used for Pay Cash modal start-------------------------------
+      $scope.showPayModl = function (payVal) {
+        $scope.pay_totVal = payVal;
+        $scope.modalInstance = $uibModal.open({
+          templateUrl: './modules/sell/views/component/sell_payCash.html',
+          scope: $scope,
+          size: 'sm-6',
+          pay_totVal: function () { return payVal;}
+        });
+      }; 
+      //-----------End of the pay cash modal--------------------------------------------------
+
+      //this function is used for inventory uibmodal-----------------------------------------
+      $scope.showInvt = function(name, catg, desc, qty, price, sup_price, dcnt){
+        $scope.inv_name = name;
+        $scope.inv_catg = catg;
+        $scope.inv_desc = desc;
+        $scope.inv_qty = qty;
+        $scope.inv_price = price;
+        $scope.inv_sup_price = sup_price;
+        $scope.inv_dcount = dcnt;
+        $scope.modalInstance = $uibModal.open({
+            templateUrl: './modules/sell/views/component/sell_invModal.html',
+            scope:$scope,
+            size: 'lg',
+            inv_name: function(){return name;},
+            inv_catg: function(){return catg;},
+            inv_desc: function(){return desc;},
+            inv_qty: function(){return qty;},
+            inv_price: function(){return price;},
+            inv_sup_price: function(){return sup_price;},
+            inv_dcount: function(){return dcnt;},
+
+
+        });
+      };
+      $scope.cancel = function(){
+        $scope.modalInstance.dismiss();
+      };
+      $scope.ok = function (){
+        $scope.modalInstance.dismiss();
+      };
+      //end of inventory functions--------------------------------------------------------------
+
     }
 ])
+
+.directive('toggle', function(){
+  return {
+    restrict: 'A',
+    link: function(scope, element, attrs){
+      if (attrs.toggle=="popover"){
+        $(element).popover();
+      }
+    }
+  };
+});
+
+

@@ -5,7 +5,7 @@ angular.module('Home')
 .controller('HomeController',  ['$scope', '$rootScope',
     function ($scope, $rootScope) {
         $scope.nav = {
-            page:'setup'
+            page:'sell'
         }
         // Add $scope variable to store the user
         $scope.currentUser1 = $rootScope.globals.currentUser;

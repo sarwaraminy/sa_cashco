@@ -7107,6 +7107,7 @@ progress {
     opacity: 0;
 }
 
+
 .collapse:not(.show) {
     display: none;
 }
@@ -10009,6 +10010,8 @@ button.close {
     position: relative;
     flex: 1 1 auto;
     padding: 1rem;
+    max-height: calc(80vh - 200px);
+    overflow-y: auto;
 }
 
 .modal-footer {
@@ -10372,7 +10375,7 @@ button.close {
     box-shadow: 0 0.5rem 1rem rgba(46, 54, 80, 0.15);
 }
 
-.popover .popover-arrow {
+.popover .arrow {
     position: absolute;
     display: block;
     width: 1rem;
@@ -10380,7 +10383,7 @@ button.close {
     margin: 0 0.3rem;
 }
 
-.popover .popover-arrow::before, .popover .popover-arrow::after {
+.popover .arrow::before, .popover .arrow::after {
     position: absolute;
     display: block;
     content: "";
@@ -10392,17 +10395,17 @@ button.close {
     margin-bottom: 0.5rem;
 }
 
-.bs-popover-top > .popover-arrow, .bs-popover-auto[x-placement^="top"] > .popover-arrow {
+.bs-popover-top > .arrow, .bs-popover-auto[x-placement^="top"] > .arrow {
     bottom: -0.5625rem;
 }
 
-.bs-popover-top > .popover-arrow::before, .bs-popover-auto[x-placement^="top"] > .popover-arrow::before {
+.bs-popover-top > .arrow::before, .bs-popover-auto[x-placement^="top"] > .arrow::before {
     bottom: 0;
     border-width: 0.5rem 0.5rem 0;
     border-top-color: rgba(46, 54, 80, 0.25);
 }
 
-.bs-popover-top > .popover-arrow::after, .bs-popover-auto[x-placement^="top"] > .popover-arrow::after {
+.bs-popover-top > .arrow::after, .bs-popover-auto[x-placement^="top"] > .arrow::after {
     bottom: 0.0625rem;
     border-width: 0.5rem 0.5rem 0;
     border-top-color: #ffffff;
@@ -10412,20 +10415,20 @@ button.close {
     margin-left: 0.5rem;
 }
 
-.bs-popover-right > .popover-arrow, .bs-popover-auto[x-placement^="right"] > .popover-arrow {
+.bs-popover-right > .arrow, .bs-popover-auto[x-placement^="right"] > .arrow {
     left: -0.5625rem;
     width: 0.5rem;
     height: 1rem;
     margin: 0.3rem 0;
 }
 
-.bs-popover-right > .popover-arrow::before, .bs-popover-auto[x-placement^="right"] > .popover-arrow::before {
+.bs-popover-right > .arrow::before, .bs-popover-auto[x-placement^="right"] > .arrow::before {
     left: 0;
     border-width: 0.5rem 0.5rem 0.5rem 0;
     border-right-color: rgba(46, 54, 80, 0.25);
 }
 
-.bs-popover-right > .popover-arrow::after, .bs-popover-auto[x-placement^="right"] > .popover-arrow::after {
+.bs-popover-right > .arrow::after, .bs-popover-auto[x-placement^="right"] > .arrow::after {
     left: 0.0625rem;
     border-width: 0.5rem 0.5rem 0.5rem 0;
     border-right-color: #ffffff;
@@ -10435,17 +10438,17 @@ button.close {
     margin-top: 0.5rem;
 }
 
-.bs-popover-bottom > .popover-arrow, .bs-popover-auto[x-placement^="bottom"] > .popover-arrow {
+.bs-popover-bottom > .arrow, .bs-popover-auto[x-placement^="bottom"] > .arrow {
     top: -0.5625rem;
 }
 
-.bs-popover-bottom > .popover-arrow::before, .bs-popover-auto[x-placement^="bottom"] > .popover-arrow::before {
+.bs-popover-bottom > .arrow::before, .bs-popover-auto[x-placement^="bottom"] > .arrow::before {
     top: 0;
     border-width: 0 0.5rem 0.5rem 0.5rem;
     border-bottom-color: rgba(46, 54, 80, 0.25);
 }
 
-.bs-popover-bottom > .popover-arrow::after, .bs-popover-auto[x-placement^="bottom"] > .popover-arrow::after {
+.bs-popover-bottom > .arrow::after, .bs-popover-auto[x-placement^="bottom"] > .arrow::after {
     top: 0.0625rem;
     border-width: 0 0.5rem 0.5rem 0.5rem;
     border-bottom-color: #ffffff;
@@ -10466,20 +10469,20 @@ button.close {
     margin-right: 0.5rem;
 }
 
-.bs-popover-left > .popover-arrow, .bs-popover-auto[x-placement^="left"] > .popover-arrow {
+.bs-popover-left > .arrow, .bs-popover-auto[x-placement^="left"] > .arrow {
     right: -0.5625rem;
     width: 0.5rem;
     height: 1rem;
     margin: 0.3rem 0;
 }
 
-.bs-popover-left > .popover-arrow::before, .bs-popover-auto[x-placement^="left"] > .popover-arrow::before {
+.bs-popover-left > .arrow::before, .bs-popover-auto[x-placement^="left"] > .arrow::before {
     right: 0;
     border-width: 0.5rem 0 0.5rem 0.5rem;
     border-left-color: rgba(46, 54, 80, 0.25);
 }
 
-.bs-popover-left > .popover-arrow::after, .bs-popover-auto[x-placement^="left"] > .popover-arrow::after {
+.bs-popover-left > .arrow::after, .bs-popover-auto[x-placement^="left"] > .arrow::after {
     right: 0.0625rem;
     border-width: 0.5rem 0 0.5rem 0.5rem;
     border-left-color: #ffffff;
@@ -32835,7 +32838,7 @@ label {
     
     .product-list-80 {
         display: block;
-        height: calc(60vh - 2rem);
+        height: calc(80vh - 2rem);
         overflow-y: auto;
         overflow-x: hidden;
         position: -webkit-sticky;

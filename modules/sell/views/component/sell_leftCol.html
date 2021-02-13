@@ -1,0 +1,16 @@
+
+
+<!-- Form -->
+<div class="mb-3">
+    <label for="srchProduct">Search for Products</label>
+    <div class="input-group">
+        <span class="input-group-text" id="basic-addon1"><span class="fas fa-search"></span></span>
+        <input type="text" class="form-control" ng-model="searchText" placeholder="Start typeing or scanning...">
+    </div>
+</div>
+<!-- End of Form -->
+<!--- Product list-->
+<div class="product-list-80">
+    <div ng-include src="'modules/sell/views/component/sell_addProduct.html'"></div>
+</div>
+<!--- End of Product list-->

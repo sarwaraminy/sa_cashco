@@ -1,0 +1,53 @@
+
+<div class="row mb-4 mt-3">
+    <div class="col-6 ml-4"><span class="h2">Amount to Pay</span></div>
+    <div class="col-sm-5">
+        <div class="input-group">
+            <button type="button" ng-model="payVal" class="btn btn-pill btn-outline-primary form-control text-right" ng-disabled ="true">{{payVal | number:2}}</button>
+        </div>
+        <label class="col-sm-12 text-success"><a href="" ng-click="showPlist()">Edit to make partial payment.</a></label>
+    </div>
+</div>
+<button type="button" class="btn btn-lg btn-success pr-5 pl-5 ml-4" ng-click="showPayModl(payVal)">Cash</button>
+<div class="row"><!-------------------this row is used for adding a customer to pay-->
+    <div class="col-sm-11">
+        <!-- Form -->
+        <div class="mb-3">
+            <div class="input-group ml-4">
+                <span class="input-group-text" id="basic-addon3"><span class="fas fa-user"></span></span>
+                <input type="text" ng-model="cstmr" class="form-control" placeholder="Add a Customer to pay with the following option">
+            </div>
+        </div>
+        <!-- End of Form -->
+    </div>
+</div><!--------End of the Add Customer-->
+<div class="row"><!-----this row used for options to pay a customer for you-->
+    <div class="col-sm-3 ml-4">
+        <!-- Form -->
+        <div class="mb-3">
+            <div class="input-group">
+                <button type="button" ng-disabled="cstmr ==0" class="btn btn-lg btn-gray pl-5 pr-5" ng-click="showLayby(payVal)">Layby</button>
+            </div>
+        </div>
+        <!-- End of Form -->
+    </div>
+    <div class="col-sm-4 ml-3">
+        <!-- Form -->
+        <div class="mb-3">
+            <div class="input-group">
+                <button type="button" ng-disabled="cstmr ==0" class="btn btn-lg btn-gray pl-4 pr-4" ng-click="showStCrd(payVal)">Store Credit</button>
+            </div>
+        </div>
+        <!-- End of Form -->
+    </div>
+    <div class="col-sm-4">
+        <!-- Form -->
+        <div class="mb-3">
+            <div class="input-group">
+                <button type="button" ng-disabled="cstmr ==0" class="btn btn-lg btn-gray pl-4 pr-4" ng-click="showAnAccount(payVal)">On Account</button>
+            </div>
+        </div>
+        <!-- End of Form -->
+    </div>
+</div><!--------End of the Add options-->
+
