@@ -46,8 +46,9 @@
             </label>
             <!----------------------------Dropdown data-->
             <div class="dropdown-menu dashboard-dropdown dropdown-menu-left mt-2" id="mactions-ddl">
-                <a class="dropdown-item font-weight-bold" href="#"><span class="fas fa-box-open mr-2"></span>parked </a>
-                <a class="dropdown-item font-weight-bold" href="#"><span class="fas fa-store mr-2"></span>unfulfillments</a>
+                <a class="dropdown-item font-weight-bold" href="" ng-click="showQS()"><span class="fas fa-quote-left mr-2"></span>Quote Sale </a>
+                <a class="dropdown-item font-weight-bold" href=""><span class="fas fa-check mr-2"></span>Mark as Unfulfillments</a>
+                <a class="dropdown-item font-weight-bold" href=""><span class="fas fa-trash mr-2"></span>Discard Sale</a>
             </div>
             <!----------------------------end of Dropdown-->
         <!-- End of Form -->
@@ -55,7 +56,7 @@
 
     <div class="input-group">
         <span class="input-group-text" id="basic-addon3"><span class="fas fa-user"></span></span>
-        <input type="text" ng-model="customer" class="form-control" id="customer" placeholder="Add Customer" aria-label="customer">
+        <input type="text" ng-click="false" uib-popover-template="searchCustom.templateUrl" popover-is-open="searchCustom.isOpen" ng-change="searchCustom.open(customer)" popover-placement="bottom" ng-model="customer" class="form-control" placeholder="Add Customer">
     </div>
     
     <!--------this part is retrived section of Sale which is parked-->

@@ -1,0 +1,95 @@
+
+
+<div class="row mb-1"><!---Product title-->
+  <!-- Form-->
+  <div class="col-sm-2">
+      <div class="mb-0">
+          <label for="qtyN" class="bold text-underline"><a href="" ng-click="changeSort('qty')">Quantity</a></label>
+      </div>
+  </div>
+  <!-- End of Form -->
+  <!-- Form-->
+  <div class="col-sm-3">
+      <div class="mb-0">
+          <label for="Name" class="bold text-underline"><a href="" ng-click="changeSort('description')">Product Name</a></label>
+      </div>
+  </div>
+  <!-- End of Form -->
+  <!-- Form-->
+  <div class="col-sm-2">
+      <div class="mb-0">
+          <label for="price" class="bold text-underline"><a href="" ng-click="changeSort('price')">Price</a></label>
+      </div>
+  </div>
+  <!-- End of Form -->
+  <!-- Form-->
+  <div class="col-sm-3">
+    <div class="mb-0">
+        <label for="Total" class="bold text-underline"><a href="" ng-click="changeSort('qty * price')">Total</a></label>
+    </div>
+</div>
+<!-- End of Form -->
+</div>
+<div class="row mb-0" ng-repeat="item in inventory | filter:searchText | orderBy:sort.column:sort.descending "><!--Product list items-->
+  <!-- Form-->
+  <div class="col-sm-2">
+      <div class="mb-0">
+          <div class="input-group">
+              <input type="number" class="form-control" ng-model="item.qty" value="item">
+          </div>
+      </div>
+  </div>
+  <!-- End of Form -->
+  <!-- Form-->
+  <div class="col-sm-3">
+      <div class="mb-0 mt-2">
+          <div class="input-group">
+              <span>{{item.description}}</span>
+          </div>
+      </div>
+  </div>
+  <!-- End of Form -->
+  <!-- Form-->
+  <div class="col-sm-2">
+      <div class="mb-0 mt-2">
+          <div class="input-group">
+              <span ng-class="{ 'on-sale' : item.onSale }">{{ item.price | currency }}</span>
+          </div>
+      </div>
+  </div>
+  <!-- End of Form-->
+  <!-- Form-->
+  <div class="col-sm-2">
+    <div class="mb-0 mt-2">
+        <div class="input-group">
+            <span>{{ item.qty * item.price | currency }}</span>
+        </div>
+    </div>
+</div>
+<!-- End of Form-->
+  <!-- Form-->
+  <div class="col-sm-3">
+      <div class="mb-0">
+          <div class="input-group">
+              <a href="" ng-click="addItem(item)" class="btn btn-sm btn-tertiary">Buy Item <i class="fas fa-angle-right ml-1"></i></a>
+          </div>
+      </div>
+  </div>
+  <!-- End of Form-->
+</div>
+  
+
+<!--div class="row">
+  <h2>Your Cart:</h2>
+  <ul>
+    <li class="animate-repeat" ng-repeat="item in cart | orderBy:'category'">
+      <span>{{ item.qty + ' x ' + item.description + ' = ' + (getCost(item) | currency) }}</span>
+      <button class="btn-danger btn-xs" ng-click="removeItem(item);">Remove Item</button>
+      </br>
+      </br>
+    </li>
+  </ul>
+  <h3>Total: {{ getTotal() | currency }}</h3>
+  <button class="btn-danger" ng-click="clearCart();">Clear Cart</button>
+</div--->   
+  

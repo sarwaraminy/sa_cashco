@@ -1,6 +1,6 @@
 'use strict';
-angular.module('Sell', ['ngAnimate', 'ui.bootstrap'])
-.controller('sellCtrl', ['$scope', '$sce', '$http','$cookies', '$uibModal', '$log', '$route', '$location',
+var sell_module = angular.module('Sell', ['ngAnimate', 'ui.bootstrap']);
+sell_module.controller('sellCtrl', ['$scope', '$sce', '$http','$cookies', '$uibModal', '$log', '$route', '$location',
     function ($scope, $sce, $http, $cookies, $uibModal, $log, $route, $location){
         $scope.rTrue = false; //don't show the Sale parked untill clcik on Retrieve Sale
         $scope.currency = '$';
@@ -192,6 +192,15 @@ angular.module('Sell', ['ngAnimate', 'ui.bootstrap'])
        };// end of Product sorting function  +++++++++++++++++++++++++++++++++++++++
 
        //popover js -----------------------Start
+       $scope.searchCustom = { //used when you searching a customer ---start
+        isOpen: false,
+        templateUrl: './modules/sell/views/component/sell_customerSearch.html',
+        open: function open() {
+          $scope.searchCustom.isOpen = true;
+          $scope.searchCustom.data = 'Hello!';
+        },
+        size: 'sm-12'
+       }; // end of the customer search popover
       
        //default value of discoumn sign
        $scope.dcntSign = '%';
@@ -224,6 +233,30 @@ angular.module('Sell', ['ngAnimate', 'ui.bootstrap'])
         $scope.dcount=0;
       }
       //remove the total discount--------------------------end-------------
+
+      //=================================================================================
+      // Add Customer ui modal
+      $scope.openCustomerM = function (cust){
+        $scope.searchCustom.isOpen = false;
+        $scope.cust_name = cust;
+        $scope.modalInstance = $uibModal.open ({
+          templateUrl: './modules/sell/views/component/sell_addCustomerModal.html',
+          scope: $scope,
+          size: 'lg',
+          cust_name: function () { return cust;}
+        });
+      };
+      //=================================================================================
+      //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      $scope.showQS = function () {
+        $scope.modalInstance = $uibModal.open ({
+          templateUrl: './modules/sell/views/component/sell_QuotSaleModal.html',
+          scope: $scope,
+          size: 'sm-6'
+        });
+      };
+      //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
       //-------------this function used for Pay Cash modal start-------------------------------
       $scope.showPayModl = function (payVal) {
         $scope.pay_totVal = payVal;
@@ -281,5 +314,3 @@ angular.module('Sell', ['ngAnimate', 'ui.bootstrap'])
     }
   };
 });
-
-
