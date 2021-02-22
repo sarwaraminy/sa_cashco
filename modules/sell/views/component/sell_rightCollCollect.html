@@ -1,7 +1,9 @@
 
 
 <div class="row mb-4 mt-3">
-    <div class="col-9 ml-4"><span class="h2">Give {{currency}}{{collect - payVl | number:2}} Change</span></div>
+    <div class="col-9 ml-4" ng-show="isCash" ng-if="collect > payVl"><span class="h2">Give {{collect - payVl | currency}} Change</span></div>
+    <div class="col-9 ml-4" ng-show="isSQuot"><span class="h2">Sale Quoted.</span></div>
+    <div class="col-9 ml-4" ng-if="collect==payVl"><span class="h2">Payment Received.</span></div>
 </div>
 <button type="button" class="btn btn-lg btn-success pr-5 pl-5 ml-4" ng-click="printDiv('psale')">Print</button>
 <div class="row"><!-------------------this row is used for adding a customer to pay-->

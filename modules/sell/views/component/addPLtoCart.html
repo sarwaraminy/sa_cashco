@@ -4,7 +4,7 @@
     <summary class="row mb-0 pl-4 pt-2"><!-------header retrieved sales-->
         <div class="col-sm-1"><label for="qty">{{item.qty}}</label></div>
         <div class="col-sm-3"><label for="qtname">{{item.description}}</label></div>
-        <div class="col-6 text-right"><label for="price">{{item.currency}}{{(item.qty * item.price) - ((item.dcount/100) * (item.qty * item.price)) | number:2}}</label></div>     
+        <div class="col-6 text-right"><label for="price">{{item.currency}}{{(item.qty * item.price) - ((item.dcount/100) * (item.qty * item.price)) | currency}}</label></div>     
         <div class="col-sm-1"><a href="" ng-click="removeItem(item);" class="fas fa-trash-alt text-right text-success"></a></div>    
     </summary>
     <!------- end of header retrieved sales-->

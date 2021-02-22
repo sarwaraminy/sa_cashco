@@ -16,6 +16,7 @@
         </p>
     </div>
     <div class="card-footer bg-light">
-        <button class="btn btn-success float-right" type="button">Quote</button>
+        <button ng-if="isSQuot" class="btn btn-success float-right" ng-click="setNote(quote)" type="button">Quote</button>
+        <button ng-if="isParkS" class="btn btn-success float-right" ng-click="parkSale(quote)" type="button">Park Sale</button>
     </div>
 </div>

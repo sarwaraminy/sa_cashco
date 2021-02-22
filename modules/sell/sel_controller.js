@@ -18,7 +18,23 @@ sell_module.controller('sellCtrl', ['$scope', '$sce', '$http','$cookies', '$uibM
         };
         //=========================================================================
 
+        //-------------------------------------------------------------------------
+        // this function used for setting Quote
+        $scope.setNote = function (note){
+          $scope.q_note = note; //get the note that is entered by customer
+          $scope.showNote = true; // show the row in bill page
+          $scope.showList = false; // hide add to card list
+          $scope.showProductList = false; // hide the product list in left column
+          $scope.showPayList = true; // show the paylist detail in left column
+          $scope.showColect = true; // show collect right column detail
+          $scope.isCash = false; //show the cash changes
+          $scope.isSQuot = true; // hide the Quoted Sale 
+          $scope.modalInstance.dismiss(); //close the ui modal
+        }
+        //-------------------------------------------------------------------------
+
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        //this function is used to print the final bill
         $scope.printDiv = function(divName) {
           var printContents = document.getElementById(divName).innerHTML;
           var popupWin = window.open('', '_blank', 'width=500,height=300');
@@ -52,6 +68,8 @@ sell_module.controller('sellCtrl', ['$scope', '$sce', '$http','$cookies', '$uibM
           $scope.collect = collected;
           $scope.payVl = payTo; 
           $scope.showCash = true; //show the Cash row in left column
+          $scope.isCash = true; //show the cash changes
+          $scope.isSQuot = false; // hide the Quoted Sale 
           $scope.modalInstance.dismiss(); //close the ui modal
         };
 
@@ -248,7 +266,14 @@ sell_module.controller('sellCtrl', ['$scope', '$sce', '$http','$cookies', '$uibM
       };
       //=================================================================================
       //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-      $scope.showQS = function () {
+      $scope.showQS = function (PSorQS) {
+        if(PSorQS == 'PS'){
+          $scope.isParkS = true;
+          $scope.isSQuot = false;
+        } else{
+          $scope.isSQuot = true;
+          $scope.isParkS = false; 
+        }
         $scope.modalInstance = $uibModal.open ({
           templateUrl: './modules/sell/views/component/sell_QuotSaleModal.html',
           scope: $scope,

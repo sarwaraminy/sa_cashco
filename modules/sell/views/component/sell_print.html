@@ -50,6 +50,10 @@
                 <label ng-switch-when="$">{{currency}}{{(getTotal() + getTotalPrk()) - dcount | number: 2}}</label>
             </td>
         </tr>
+        <tr ng-show="showNote" ng-init="false">
+            <td>&nbsp;</td>
+            <td colspan="2"><label>Note: {{q_note}}</label></td>
+        </tr><!-------End of the Quoted Sale-->
         <tr><!--  section for Cash payed-->
             <td>&nbsp;</td>
             <td><label>Cash</label><br><span>{{date | date:'yyyy-MM-dd'}}</span></td>

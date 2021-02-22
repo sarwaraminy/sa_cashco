@@ -45,6 +45,10 @@
           </div>
         </div>
     </div><!-----------End of the Sale Total-->
+    <hr ng-show="showNote" ng-init="false"><!-------------For Quoted Note Start-->
+    <div class="row ml-4" ng-show="showNote" ng-init="false">
+        <div class="col-10"><label>Note: {{q_note}}</label></div>
+    </div><!-------End of the Quoted Sale-->
     <hr>
     <div class="row ml-4" ng-show="showCash" ng-init="false"><!--  section for Cash payed-->
         <div class="col-7"><label class="row">Cash</label><span class="row">{{date | date:'yyyy-MM-dd'}}</span></div>
